@@ -1,0 +1,615 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}MobiVAT Web POS{% endblock %}</title>  
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/icon type"> 
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="Through adoption of information Technology, DGID (Congo Tax $ Domaines) has endevoured to boost the tax and revenue collection to achieve the government sustainable development goals!" name="description">
+    <meta name="keywords" content="Taxations">
+    <meta name="robots" content="index, follow">    
+    <meta name="copyright" content="DGID © 2020">
+    <meta name="language" content="FR">
+    <!-- <meta http-equiv="refresh" content="20"> -->
+      
+    
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mains.css' %}">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'scss/main.css' %}">
+    <link rel="stylesheet" href="{% static 'scss/skin.css' %}">
+    <link rel="stylesheet" href="{% static 'scss/style.css' %}">
+    <link rel="stylesheet" href="{% static 'scss/nav.css' %}">
+    {% endblock %}
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'table/css/bootstrap.css' %}"/>
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'table/css/jquery.dataTables.css' %}"/> -->
+   
+    <script src="https://kit.fontawesome.com/ad14bd368c.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/ad14bd368c.js' %}"></script>
+    <link href="{% static 'css/fontawesome.css' %}" rel="stylesheet">
+    <!-- Pace CSS-->
+    <link href="{% static 'css/pace-theme.css' %}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/mdb.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stepper.css' %}">
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.debug.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="/static/js/index.js"></script>
+
+    <script type='text/javascript'>
+        (function()
+        {
+          if( window.localStorage )
+          {
+            if( !localStorage.getItem('firstLoad') )
+            {
+              localStorage['firstLoad'] = true;
+              window.location.reload();
+            }  
+            else
+              localStorage.removeItem('firstLoad');
+          }
+        })();        
+    </script>
+    <script>
+        $(document).scroll(function() {
+    $('#Logo').css({width: $(this).scrollTop() > 5? "20%":"40%"});
+});
+        </script>
+        <script>
+        window.onscroll = function() {
+            growShrinkLogo1()
+        };
+        
+        function growShrinkLogo1() {
+            var Logo1 = document.getElementById("logo1")
+            if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+            Logo1.style.width = '45%';
+            } else {
+            Logo1.style.width = '60%';
+            }
+        }
+        </script>
+
+</head>
+
+<body id="wrapper" >
+    <section id="top-header" style="background-color: rgb(4, 4, 90) ; ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-9 col-xs-9 top-header-links">
+                    <marquee><b>Les impôts sont «l'élément vital du gouvernement». Ceux-ci sont utilisés pour financer les services de base tels que l'éducation et les soins de santé ainsi que les infrastructures.</b></marquee>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3 top-header-links">
+                    <ul class="contact_links">       
+                            
+                        <li ><a href=""><b style="color: #fff;"> English</b> <img src="{% static 'images/united.png' %}"></a></li>                                                                                   
+                        <li><a href=""><b style="color: #fff;"> French</b> <img src="{% static 'images/france.png' %}"></a></li>                                 
+                    </ul>                       
+                </div>   
+            </div>
+        </div>
+    </section>    
+    <!-- <header >
+        <nav class="navbar navbar-inverse" style="z-index: 2;">
+            <div class="container">
+                <div class="row">
+                    <div class="navbar-header" style="margin-left: -3%;" >                                            
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{% url 'pos-home' %}" >
+                            <h1><img src="{% static 'images/dgidlogo2.png' %}" id="logo1"  style="width: 60%;margin-top: -2.5%;"/></h1>                            
+                        </a><br>                
+                    </div>                   
+                    <div id="navbar" class="collapse navbar-collapse navbar-right" >
+                        <ul class="nav navbar-nav" style="margin-top: -12px;">
+                            <li class="active"><a href="" style="color: #006400;border-bottom-width: 5px;
+                                border-bottom-style: solid; border-bottom-color: #006400;">Accueil</a></li> 
+                            
+                            {% if request.user.is_authenticated %}
+                            <li class="dropdown"><a href="" class="dropbtn" style="text-transform: none;" >eBILL MobiVAT</a>
+                                <div class="dropdown-content" style="width: 250px;">
+                                    <a href="{% url 'pos-home' %}"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i>Ventes au Detail </a>
+                                    <a href="{% url 'pos-home' %}"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Ventes Entreprises</a>
+                                    <a href=""><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Déclaration d'Impôt</a>
+                                    <a href=""><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Relevés Comptes</a>
+                                    <a href="{% url 'products' %}"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Inventaire</a>
+                                </div>
+                            </li>
+                            <li><a href="{% url 'orders-datatable' %}">Rapports Ventes</a></li>
+                            <li class="dropdown"><a href="" class="dropbtn">Rapports Reçus</a>
+                                <div class="dropdown-content" style="width: 250px;">
+                                    <a href=""><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Reçus</a>
+                                    <a href=""><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Remboursement du Reçus</a>
+                                </div>
+                            </li>                       
+                            {% else %}
+                            <li class="dropdown"><a href="" class="dropbtn" style="text-transform: none;">eBILL MobiVAT</a>
+                                <div class="dropdown-content" style="width: 300px;">
+                                    <a href="{% url 'login' %}"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Ventes au Detail</a>
+                                    <a href="{% url 'login' %}"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Ventes Entreprises</a>
+                                    <a href="{% url 'login' %}"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Déclaration d'Impôt</a>
+                                    <a href="{% url 'login' %}"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Relevés Comptes</a>
+                                    <a href="{% url 'login' %}"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Inventaire</a>
+                                </div>
+                            </li>
+                            <li><a href="{% url 'login' %}">Rapports Ventes</a></li>
+                            <li class="dropdown"><a href="" class="dropbtn">Rapports Reçus</a>
+                                <div class="dropdown-content" style="width: 250px;">
+                                    <a href=""><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Reçus</a>
+                                    <a href=""><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Remboursement du Reçus</a>
+                                </div>
+                            </li>
+                            {% endif %}
+                            <li class="dropdown"><a href=http://mobivat.dgid.tax target="_blank"  class="dropbtn">MobiVAT</a>
+                                <div class="dropdown-content" style="width: 200px;">
+                                    <a href="http://fr.mobivat.dgid.tax/vat_fraud" target="_blank"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Fraude à la TVA</a>                                              
+                                    <a href="http://fr.mobivat.dgid.tax/features" target="_blank" ><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Caractéristiques </a>
+                                    <a href="http://fr.mobivat.dgid.tax/benefits" target="_blank"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Avantages</a>
+                                    <a href="http:/fr./mobivat.dgid.tax/partners" target="_blank"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Partenaires</a>                                         
+                                        
+                                </div>
+                            </li>              
+                            <li class="dropdown">
+                                <a href="" class="dropbtn">Contacter</a>
+                                <div class="dropdown-content">
+                                    <a href="https://meeting.mobicashonline.com/" target="_blank"><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Video Call</a>
+                                    <a href=""><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Chat</a>                                              
+                                    <a href=""><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Message</a>
+                                    <a href=""><i class="fa fa-cog sl-check boxicon" style="color: white; padding: 5px"></i> Address</a>
+                                </div>
+                            </li>           
+                        </ul>
+                    </div>
+                 <!--/.nav-collapse -->     
+                </div>
+            </div>
+        </nav>
+    </header>       -->
+        <!--/.nav-ends -->
+    <section id="top-header" style="background-color: rgb(4, 4, 90) ;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-sm-7 col-xs-8 top-header-links">
+                        
+                </div>
+                <div class="col-md-5 col-sm-5 col-xs-4 top-header-links">
+                    <ul class="contact_links" >
+                        <!-- <li><i class="fa fa-phone"></i><a href="#">+242 068532155</a></li>
+                        <li><i class="fa fa-envelope"></i><a href="#">staff@dgid.tax</a></li> -->
+                        {% if request.user.is_authenticated %}
+                        <li style="padding: 0px;"><i class="fa fa-sign-out" style="color: white;"></i><a href="{% url 'logout' %}">Se déconnecter, <b>({{user}})</b></a></li>
+                        <li><a href="">Changer mot de passe</b></a></li>
+                        {% else %}
+                        <div style="float: right;">
+                            <li><i class="fa fa-sign-in" style="color: white;"></i><a href="{% url 'login' %}" class="dropbtn">Se connecter</a></li>
+                            <li><i class="fa fa-user-plus" style="color: white;"></i><a href="{% url 'register' %}">S'inscrire</a></li>
+                        </div>
+                        <!-- <li class="dropdown"><i class="fa fa-sign-in" style="color: white;"></i><a href="#" class="dropbtn">Login</a>
+                            <div class="dropdown-content" style="z-index: 2;">
+                                <a href="" >Business or Company</a><br>
+                                <a href=""> Client</a>
+                            </div>
+                        </li>
+                        <li class="dropdown"><i class="fa fa-user-plus" style="color: white;"></i><a href="#">Register</a>
+                            <div class="dropdown-content" style="z-index: 2;">
+                                <a href="" >Business or Company</a><br>
+                                <a href=""> Client</a>
+                            </div>
+                        </li>  -->
+                        {% endif %}                                    
+                    </ul>
+                </div>                        
+            </div>
+        </div>
+    </section>
+
+    <style>    
+        .dropdown {
+            position: relative;
+            display:inline-block;
+                    
+        }                    
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color:darkgreen;
+            min-width: 150px;            
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content i:hover{
+            color: black;
+            font-weight: 900;
+            background-color: blue;
+            height: 40px;
+        }
+        
+        .dropdown-content a {
+            color: white; 
+            text-decoration: none;
+            display: block;
+            text-align:left;
+            margin-top:10px; 
+            margin-bottom: 10px;
+            margin-left: 5px;
+            line-height:0%;                    
+        }                    
+        .dropdown-content a:hover {                    
+            color: black;                   
+            background-color: blue;
+            width: fit-content;
+        }
+        .iconbox-icon p a:hover {
+        
+        color:darkgreen;
+        font-weight: 900;
+        
+        }
+        .dropdown-content a i:hover {
+        color: black !important;
+        }
+        .dropdown:hover .dropdown-content {
+        display: block;
+        
+        }
+        #navbar ul li a{ 
+            text-transform: capitalize;
+        }
+        
+        #navbar ul li{
+            margin-top: 10px;                       
+            height: 30px;
+        }
+        .navbar-inverse .navbar-nav > li > a:hover{
+            color: #006400 !important;
+            background-color: transparent;
+            border-bottom-width: 5px;
+            border-bottom-style: solid;
+            border-bottom-color:  #006400 !important;
+                            }
+                            a:hover {
+         cursor:pointer;
+         color: darkgreen;
+        
+        }
+        .aside__nav ul li{
+            border-bottom: 1px solid rgb(112, 110, 110);
+        }
+        .contact_links b:hover{
+            color: blue !important;
+        }
+                            .navbar-inverse .navbar-nav > li > a:focus{
+                                color:  #006400 !important;
+            background-color: transparent;
+            border-bottom-width: 5px;
+            border-bottom-style: solid;
+            border-bottom-color:  #006400 !important;
+                            }
+                            #top-header ul.contact_links a:hover {
+            color: blue !important;
+        }
+        #top-header ul.social_links i:hover {
+            color: blue !important;
+        }
+        .navbar-inverse .navbar-toggle .icon-bar {
+            background-color: green !important;
+        }
+        .navbar-inverse .navbar-toggle {
+            border-color: green !important
+        }
+        span{
+            color: darkgreen ;
+        }
+        #faq .panel-title a:hover, body.lightgreen #faq .panel-title a:active {
+            color: green !important;
+        }
+        #footer .footer-block a:hover{
+            color: blue !important;
+        }
+        .icon-circle {
+            background-color: darkgreen !important;
+        }
+#site-main .main  {
+    font-size: 14px;
+}
+           
+        
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+        .navbar-collapse {
+            width: auto;
+            border-top: 0;
+            box-shadow: none;
+            height: 700px;
+            margin-bottom: 0%;
+        }
+        .menu{
+            height: fit-content !important;
+        }
+        main{
+            padding: 20px;
+        }
+        .navbar-brand {
+    width: 70%;
+    margin-top: -2%;
+    margin-left: -10%;
+}
+        }    
+        body {
+            background-color: #fff;
+            font-family: Segoe UI, Arial, Sans-Serif !important;
+            font-size: 14px;
+            color: #363636 !important;
+            line-height: 26px;
+            height: 100%;
+            min-height: 100%;
+            /* overflow-x: hidden !important; */
+        }
+        .btm-footer-links b:hover{
+            color: blue !important;
+        }
+        
+
+        .w3-bar a{
+          float: left;
+          display: block;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 12px 10px;
+          text-decoration: none;
+          font-size: 15px;
+        }
+        .w3-bar a:hover{
+          background-color: darkgreen;
+          color: blue;
+        }
+        .w3-container{
+          height: 55px;
+        }
+        @media only screen and (max-width: 600px) {
+        .w3-bar a{
+          display: block; 
+          padding: 12px 40px;
+        }
+        .w3-container{
+          height: 350px;
+        }
+        }
+        
+        </style>
+{% block content %} {% endblock %}
+    <section id="top-header" style="background-color: rgb(4, 4, 90) ;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-sm-7 col-xs-7 top-header-links">
+                    <ul class="contact_links">
+                        <li><i class="fa fa-phone"></i><a href="#">+242 068532155</a></li>
+                        <li><i class="fa fa-envelope"></i><a href="#">info@dgid.tax</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-5 col-sm-5 col-xs-5 social">
+                    <ul class="social_links">
+                        <!-- <li><a href="https://www.facebook.com/Akika-BeeHive-110326277213637/"target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/AkikaBee "target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/akika-beehive-022b451a2" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.pinterest.com/akikahive/" target="_blank"><i class="fa fa-pinterest" ></i></a></li> -->
+                        <li><a href=""target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href=""target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="" target="_blank"><i class="fa fa-pinterest" ></i></a></li>                   
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 block" >
+                    <div class="footer-block">
+                        <h4>Adresse:</h4>
+                        <hr style="background-color: darkgreen;"/>
+                        <ul style="letter-spacing: 2px;"><li>Direction Générale des Impôts et des Domaines,</li><br>
+                            <li> 2 Ave William Guynet</li>
+                            <li>Brazzaville</li>
+                            <li>Répubique du Congo</li>             
+                        </ul>                      
+                    </div><br>
+                    <div>
+                        <img src="{% static 'images/Flag-icon.png' %}" style="margin-left: -18%; height: 40%;width: 40%;">
+                        <span style="color: rgb(12, 167, 12); margin-left: -13%;letter-spacing: 2px;font-size: small;font-style: italic; font-weight: bold;">Unité, Travail, Progres</span><br>
+                        <p style="margin-left: 10%;margin-top: -13%;letter-spacing: 2px">Répubique du Congo</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 block">
+                    <div class="footer-block">
+                        <h4>Liens utiles</h4>
+                        <hr style="background-color: darkgreen;"/>
+                        <ul class="footer-links"style="letter-spacing: 2px;">
+                            <li><a href="">À propos de la TVA</a></li>
+                            
+                            {% if request.user.is_authenticated %}
+                                <li><a href="{% url 'pos-home' %}">Ventes Detail</a></li>
+                                <li><a href="{% url 'pos-home' %}">Ventes Entreprises</a></li>
+                                <li><a href="">Déclaration d'Impôt</a></li>
+                                <li><a href="">Relevés Comptes</a></li>
+                                <li><a href="{% url 'products' %}">Inventaire</a></li>
+                                {% else %}
+                                <li><a href="{% url 'login' %}">Ventes Detail</a></li>
+                                <li><a href="{% url 'login' %}">Ventes Entreprises</a></li>
+                                <li><a href="{% url 'login' %}">Déclaration d'Impôt</a></li>
+                                <li><a href="{% url 'login' %}">Relevés Comptes</a></li>
+                                <li><a href="{% url 'login' %}">Inventaire</a></li>
+                                {% endif %}
+                            <li><a href="">FAQ</a></li>
+                            <li><a href="">Contacter</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 block">
+                    <div class="footer-block">
+                        <h4>Messages récents</h4>
+                        <hr style="background-color: darkgreen;"/>
+                        <ul class="footer-links" style="letter-spacing: 2px;">
+                            <li><a href="">Nouvelles</a></li>
+                            {% for article in most_recent %} 
+                            <li>
+                                <a href="" class="post">{{article.title}}</a>
+                                <p class="post-date">Published {{article.publication_date|date:"d M y"}}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    <section id="bottom-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 btm-footer-links">
+                    <p style="color: grey; font-size: small;">Copyright &copy <script type="text/javascript">
+                        document.write(new Date().getFullYear());
+                        </script>WEBPOS</p>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12 btm-footer-links">
+                    <p style="color: grey; font-size: small; margin-right: 20px;">Project Execution : <a href=http://mobivat.com target="_blank"> <b style="color: grey; font-size: small;">MobiVat LTD</b></a><a href=https://mobicashonline.com target="_blank" style="margin-left: -2.5%;color: grey;font-size: small;"> & <b style="color: grey; font-size: small;"> Mobicash Group LTD</b></a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div id="google_translate_element"></div>
+ <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+        
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- <script type="text/javascript">
+    function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
+<!-- <div id="panel">
+    <div id="panel-admin">
+        <div class="panel-admin-box">
+            <div id="tootlbar_colors">
+                <button class="color" style="background-color:#1abac8;" onclick="mytheme(0)"></button>
+                <button class="color" style="background-color:#ff8a00;" onclick="mytheme(1)"> </button>
+                <button class="color" style="background-color:#b4de50;" onclick="mytheme(2)"> </button>
+                <button class="color" style="background-color:#e54e53;" onclick="mytheme(3)"> </button>
+                <button class="color" style="background-color:#006400" onclick="mytheme(4)"> </button>
+                <button class="color" style="background-color:#159eee;" onclick="mytheme(5)"> </button>
+            </div>
+        </div>
+
+    </div>
+    <a class="open" href="#"><span><i class="fa fa-gear fa-spin"></i></span></a>
+</div> -->
+    <!-- <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'aa4a5a03-6719-4e8e-b3d3-06cc6cbabbf4', f: true }); done = true; } }; })();</script> -->
+<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+<script type="text/javascript">window.cookieconsent_options = {"message":"Ce site Web utilise des cookies pour vous garantir la meilleure expérience sur notre site Web","dismiss":"J'ai compris!","Apprendre plus":"","link":null,"theme":"dark-bottom"};
+</script> <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js'></script>
+<!-- End Cookie Consent plugin -->
+<script src = "{% static 'table/js/jquery-3.2.1.js' %}"></script>
+<script src = "{% static 'table/js/jquery.dataTables.js' %}"></script>
+<script type = "text/javascript">
+    $(document).ready(function(){
+        $('#table').DataTable();
+    });
+</script>
+
+<!-- SCRIPTS -->
+<!-- Pace JS -->
+<script type="text/javascript" src="{% static 'js/pace.min.js' %}"></script>
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/steppers.js' %}"></script>
+<!--Custom scripts-->
+<script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" integrity="sha512-ZDSPMa/JM1D+7kdg2x3BsruQ6T/JpJo3jWDWkCZsP+5yVyp1KfESqLI+7RqB5k24F7p2cV7i2YHh/890y6P6Sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.js" integrity="sha512-6WOG76AXc8rlgtGYLGhDg7lIzZG2Cc+VrSamvgpeBYgxauGuoMua6uKll4OsZ0JvVSt12lRX/9uCmXzkt3/wfg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="{% static 'js/darkmode.js' %}"></script>
+<script>
+    // SideNav Initialization
+    $(".button-collapse").sideNav();
+
+    var container = document.querySelector('.custom-scrollbar');
+    var ps = new PerfectScrollbar(container, {
+        wheelSpeed: 2,
+        wheelPropagation: true,
+        minScrollbarLength: 20
+    });
+
+</script>
+
+<! -- Request USER -->
+<script type="text/javascript">
+    var user = '{{ request.user }}'
+</script>
+<! -- Request USER -->
+
+<! -- CSRF TOKEN -->
+<script type="text/javascript">
+    function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getToken('csrftoken');
+</script>
+<! -- CSRF TOKEN -->
+
+
+{% block javascript %}
+{% endblock %}
+</body>
+
+</html>

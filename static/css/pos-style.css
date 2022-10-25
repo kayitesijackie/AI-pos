@@ -1,0 +1,21 @@
+.my-custom-scrollbar-cart {
+    position: relative;
+    height: calc(100vh - 40vh);
+    width: 100%;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+.my-custom-scrollbar-product-list {
+    position: relative;
+    height: calc(100vh - 40vh);
+    width: 100%;
+    overflow: auto;
+}
+
+.font-white {
+    color: white !important;
+}
